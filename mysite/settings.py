@@ -1,11 +1,11 @@
 import sys
 import os
 #import oracledb as cx_Oracle
-import oracledb 
-oracledb.defaults.config_dir = "/usr/lib/oracle/21/client64/lib/network/admin"
-#oracledb.init_oracle_client(config_dir="/usr/lib/oracle/21/client64/lib/network/admin")
-oracledb.version = "8.3.0"
-sys.modules["cx_Oracle"] = oracledb
+# import oracledb 
+# oracledb.defaults.config_dir = "/usr/lib/oracle/21/client64/lib/network/admin"
+# #oracledb.init_oracle_client(config_dir="/usr/lib/oracle/21/client64/lib/network/admin")
+# oracledb.version = "8.3.0"
+# sys.modules["cx_Oracle"] = oracledb
 
 
 
@@ -86,13 +86,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-cs='''(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'''
+# cs='''(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'''
 
 
-connection = oracledb.connect(
-     user="appweb",
-     password='v3dn7wWECsZT',
-     dsn=cs)
+# connection = oracledb.connect(
+#      user="appweb",
+#      password='v3dn7wWECsZT',
+#      dsn=cs)
 
 
 

@@ -24,25 +24,25 @@ class Plant(models.Model):
 
 
 
-response = requests.get(plants_endpoint)
-data = response.json()
+# response = requests.get(plants_endpoint)
+# data = response.json()
 
-plant_list = []
-for plant in data['data']:
-    plant_list.append({
-    'common_name': plant.get('common_name'),
-    'scientific_name': plant.get('scientific_name'),
-    'bibliography': plant.get('bibliography'),
-    'image_url': plant.get('image_url')
-    })
+# plant_list = []
+# for plant in data['data']:
+#     plant_list.append({
+#     'common_name': plant.get('common_name'),
+#     'scientific_name': plant.get('scientific_name'),
+#     'bibliography': plant.get('bibliography'),
+#     'image_url': plant.get('image_url')
+#     })
 
-for plant_dict in plant_list:
-    Plant.objects.create(
-    common_name=plant_dict['common_name'],
-    scientific_name=plant_dict['scientific_name'],
-    bibliography=plant_dict['bibliography'],
-    image_url=plant_dict['image_url']
-    )
+# for plant_dict in plant_list:
+#     Plant.objects.create(
+#     common_name=plant_dict['common_name'],
+#     scientific_name=plant_dict['scientific_name'],
+#     bibliography=plant_dict['bibliography'],
+#     image_url=plant_dict['image_url']
+#     )
 
 
  
