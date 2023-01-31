@@ -96,18 +96,18 @@ connection = oracledb.connect(
 
 
 
-DATABASES ={
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'oxtyb031bdn4vwo2_high',
-        'USER': 'appweb',
-        'PASSWORD': 'v3dn7wWECsZT',
-        # 'dsn': 'gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com',
-        # 'HOST': 'adb.sa-santiago-1.oraclecloud.com',
-        # 'PORT': '1522',
+# DATABASES ={
+#     'default': {
+#         'ENGINE': 'django.db.backends.oracle',
+#         'NAME': 'oxtyb031bdn4vwo2_high',
+#         'USER': 'appweb',
+#         'PASSWORD': 'v3dn7wWECsZT',
+#         # 'dsn': 'gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com',
+#         # 'HOST': 'adb.sa-santiago-1.oraclecloud.com',
+#         # 'PORT': '1522',
 
-        }
-    }
+#         }
+#     }
 
 DATABASES = {
     'default': {
