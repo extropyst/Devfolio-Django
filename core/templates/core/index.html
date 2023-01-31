@@ -1,0 +1,129 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- boostrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- my estilo -->
+    <!-- my estilo -->
+    <link rel="stylesheet" href="/core/css/estilo.css">
+
+
+<body>
+    
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/html/login.html">Home</a>
+                  </li>
+
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <a href="/html/menu.html" > <button class="btn btn-outline-success" type="button" id="navbar_boton1">Buscar</button> </a>
+                </form>
+              </div>
+            </div>
+          </nav>
+      </div>
+
+
+
+
+
+
+<div class="container">
+
+        <div class="row">
+            <div class="col">
+                <!-- columna vacia -->
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center g-3 gy-5">
+
+
+            <div class="p-3 border col-md-auto">
+
+
+
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner" id="carrusel">
+                      <div class="carousel-item active" >
+                        <img src="https://www.armony.cl/wp-content/uploads/2020/09/FICHA-TIERRA-DE-HOJAS.jpg" onclick="location.href='http://youtube.com'"  class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://potgarden.cl/potgardentienda/wp-content/uploads/2020/04/Macetero-Turba-Vegetal-Potgarden-_1.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://www.denia.com/wp-content/uploads/2018/08/productos-jardineria-be-green-garden.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+
+
+            </div>
+
+        </div>
+        
+      </div>
+
+      <div class="container">
+
+
+        <table class="table" id="categorias">
+          <thead>
+              <tr>
+                  <th class="scope">Nombre Común</th>
+                  <th class="scope">Nombre Científico</th>
+                  <th class="scope">Fotografía</th>
+                  <th class="scope">Bibliografía</th>
+              </tr>
+          </thead>
+          <tbody id="dataTable">
+              
+          </tbody>
+          
+      </table> 
+
+
+      </div>
+      
+
+      
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- My JavaScript -->
+<script src="{% static 'js/index.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- boostrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet">
+
+<!-- jQuery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- Datatable JS -->
+    <!-- <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
+<!-- datatable css -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css"> -->
+
+<!-- my estilo -->
+
+<link type="text/css" rel="stylesheet" href="{% static 'css/menu.css' %}">
+
+    <!-- <link rel="stylesheet" href="/static/css/menu.css"> -->
+</head>
+<body>
+
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/html/login.html">Home</a>
+                  </li>
+    
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="button" id="boton3" >Buscar</button>
+                 
+                </form>
+              </div>
+            </div>
+          </nav>
+      </div>
+    
+    
+    
+    
+          <div class="container p-5  justify-content-center align-items-center">
+    
+            <div class="p-1 row ">
+                <div class="p-3 col ">
+                    <p class=" p-2 text-dark font-italic text-capitalize text-center bg-light" >
+                      Bienvenido a nuestro sistema de gestion de compra de jardinería.
+    
+                    </p>
+                </div>
+                
+            </div>
+    
+          </div>
+            
+
+<!-- Seccion del Menu -->
+
+<div class="container">
+  <br>
+<!-- Cajon de busqueda -->
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="button" id="boton" >Buscar</button>
+  </form>
+  <br>
+
+<!-- Encabezado -->
+<div class="row">
+  <h1>Listado de plantas</h1>
+</div>
+
+
+  <!-- Tabla del menu -->
+
+  <!-- <table class="table" >
+    <thead>
+        <tr>
+            <th class="scope">Fotografía</th>
+            <th class="scope">Nombre Común</th>
+            <th class="scope">Nombre Científico</th>
+            <th class="scope">Bibliografía</th>
+            <th class="scope">Carro de compra</th>
+        </tr>
+    </thead>
+    <tbody >
+    
+    <tr> 
+      
+      <td><img width="200px" src=></img></td>
+      <br> 
+      <td width="100px"></td> 
+      <td width="100px"></td>  
+      <td width="100px"></td>
+    
+    </tr>
+    
+  </tbody>
+  </table>
+</div>
+
+              -->
+
+<!-- Termino de tabla del menu -->
+
+<main class="container">
+  {% for pl in plantas %}
+  <section class="row row-cols-auto row-cols-auto">
+    <div class="card bg-success border-warning text-white ">
+      <div class="card-header">
+        {{pl.scientific_name}}
+      </div>
+      <img class="card-img-top" src="{{pl.image_url}}" alt="Card image cap">
+      <!-- <div class="card__image-container">
+        <img  src="{{pl.image_url}}"/>
+      </div> -->
+      <div class="card-body">
+
+          <p class="card-text"> Nombre Común: </p>
+          <h5 class="card-title">{{pl.common_name}}</h5>
+
+        <a href="#" class="btn btn-primary">Agregar</a>
+      </div>
+
+      <div class="card-footer "> Bibliografía: {{pl.bibliography}} </div>
+    </div>
+  </section>
+  {% endfor %}
+
+</main>
+  
+
+
+    
+    
+<!-- Bootsrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+<!-- My JavaScript -->
+  <script src="{% static 'js/menu.js' %}"></script>
+
+</body>
+</html>
