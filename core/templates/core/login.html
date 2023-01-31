@@ -41,8 +41,8 @@
 
 
 
+<!-- Encabezado -->
 
-              
  <div class="container container-sm p-5 ">
 
   <br>
@@ -54,36 +54,35 @@
         </p>
 
             <div class="col-lg-6 m-auto ">
-                <form action="#">
 
+<!-- Inicio de formulario -->
 
-                    <div class="form-group">
-    
-                        <label for="email">Correo: <span class="asterik">*</span></label>
-                        <input type="text" name="email" id="email" class="form-control" autocomplete="off">
+                <form method="post" action="{{ index_url }}" id="form_registro">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                        <!-- <label for="email">Correo: <span class="asterik">*</span></label>
+                        <input type="email"  name=""  id="email" class="form-control" autocomplete="off">
                         <h6 id="emailvalidation"></h6>
-                    </div>
-                    <div class="form-group">
+   
                         <label for="password">Contraseña: <span class="asterik">*</span></label>
-                        <input type="password" name="pass" id="password" class="form-control" autocomplete="off">
+                        <input type="password" name="" id="password" class="form-control" autocomplete="off">
                         <h6 id="passwordvalidation"></h6>
-                    </div>
 
 
-                    <br>
+                    <br> -->
 
-         
-                    
 
                     <div class="d-grid gap-2 d-md-block">
 
                       {% url 'index' as index_url %}
                       {% if index_url %}
-                      <a href="{{ index_url }}"> 
-                        <button type="button" class="btn btn-lg btn-primary">Ingreso cliente</button> </a>
-                        {% endif %}
+                      <input type="submit" value="Ingreso cliente">
+                      {% endif %}
+
+
+                        <!-- <button type="button" class="btn btn-lg btn-primary"></button> -->
+                        
                       </div>
-                        <!-- <input type="submit" value="Registrarse" id="submitvalidation" class="btn btn-lg btn-secondary"> -->
                         
                     <div class="d-grid gap-2 d-md-block">
                       {% url 'registro' as registro_url %}
@@ -102,6 +101,10 @@
                     </div>
 
                 </form>
+<!-- Termino de formulario -->
+
+                <div class="alert alert-success" role="alert" >{{mensaje}}</div>
+
             </div>
 
 

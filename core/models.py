@@ -10,12 +10,7 @@ plants_endpoint = 'https://trefle.io/api/v1/plants?token=' + TREFLE_API_TOKEN
 
 # Create your models here.
 
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-
-
-
+   
 class Plant(models.Model):
     common_name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255)
@@ -23,29 +18,50 @@ class Plant(models.Model):
     image_url = models.URLField()
 
 
-
-# response = requests.get(plants_endpoint)
-# data = response.json()
-
-# plant_list = []
-# for plant in data['data']:
-#     plant_list.append({
-#     'common_name': plant.get('common_name'),
-#     'scientific_name': plant.get('scientific_name'),
-#     'bibliography': plant.get('bibliography'),
-#     'image_url': plant.get('image_url')
-#     })
-
-# for plant_dict in plant_list:
-#     Plant.objects.create(
-#     common_name=plant_dict['common_name'],
-#     scientific_name=plant_dict['scientific_name'],
-#     bibliography=plant_dict['bibliography'],
-#     image_url=plant_dict['image_url']
-#     )
+class Person(models.Model):
+    email = models.CharField(max_length=255)  # , verbose_name='Correo: *'
+    password = models.CharField(max_length=255) #, verbose_name='Contraseña: *'
 
 
- 
+
+
+# class Person(models.Model):
+#     first_name = models.CharField(max_length=30)
+#     last_name = models.CharField(max_length=30)
+
+
+
+
+response = requests.get(plants_endpoint)
+data = response.json()
+
+plant_list = []
+for plant in data['data']:
+    plant_list.append({
+    'common_name': plant.get('common_name'),
+    'scientific_name': plant.get('scientific_name'),
+    'bibliography': plant.get('bibliography'),
+    'image_url': plant.get('image_url')
+    })
+
+for plant_dict in plant_list:
+    Plant.objects.create(
+    common_name=plant_dict['common_name'],
+    scientific_name=plant_dict['scientific_name'],
+    bibliography=plant_dict['bibliography'],
+    image_url=plant_dict['image_url']
+    )
+
+
+
+
+
+
+
+
+
+
+
 
 # COMMON_NAME = 'Common_Name'
 # SCIENTIFIC_NAME = 'Scientific_Name'

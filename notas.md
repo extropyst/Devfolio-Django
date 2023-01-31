@@ -32,3 +32,7 @@ genera una version de este codigo javascript:
 });
 
 que utilice fetch y que funcione para la siguiente api rest: https://trefle.io/api/v1/plants?token=-4GeatwCRGmaD5d8CfvrnxoiMd_aObLSJsMFxxFKAu8
+
+
+
+
