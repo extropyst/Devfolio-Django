@@ -19,8 +19,9 @@ class Plant(models.Model):
 
 
 class Person(models.Model):
-    email = models.CharField(max_length=255)  # , verbose_name='Correo: *'
-    password = models.CharField(max_length=255) #, verbose_name='Contraseña: *'
+    email = models.EmailField(
+        max_length=255, unique=True, verbose_name='Correo', help_text="Formato: username@nombredominio.extension", )
+    password = models.CharField(max_length=255, verbose_name='Contraseña')
 
 
 

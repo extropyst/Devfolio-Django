@@ -28,7 +28,7 @@
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/html/login.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Home</a>
                   </li>
       
                 </ul>
@@ -43,7 +43,7 @@
 
 <!-- Encabezado -->
 
- <div class="container container-sm p-5 ">
+ <div class="container d-table container-sm p-5 gap-2">
 
   <br>
         <h2 class="text-center text-dark">
@@ -53,52 +53,38 @@
             Complete los campos para ingresar en nuestro sitio
         </p>
 
-            <div class="col-lg-6 m-auto ">
+            <div class="col-lg-6 m-auto justify-content-center d-grid gap-2 ">
 
 <!-- Inicio de formulario -->
 
-                <form method="post" action="{{ index_url }}" id="form_registro">
+                <form method="post" action="{% url 'index' %}" id="form_registro" >
                   {% csrf_token %}
-                  {{ form.as_p }}
-                        <!-- <label for="email">Correo: <span class="asterik">*</span></label>
+
+                    <label for="email">Correo: <span class="asterik">*</span></label>
+                    <div class="form-group" id="email">{{ form.email }}</div>
+                      <!-- <h6 id="emailvalidation"></h6> -->
+                    
+                    <label for="password">Contraseña: <span class="asterik">*</span></label>
+                    <div class="form-group" id="password">{{ form.password }}</div>
+                    <!-- <h6 id="passwordvalidation"></h6> -->
+                    
+                    <!--
                         <input type="email"  name=""  id="email" class="form-control" autocomplete="off">
-                        <h6 id="emailvalidation"></h6>
-   
-                        <label for="password">Contraseña: <span class="asterik">*</span></label>
                         <input type="password" name="" id="password" class="form-control" autocomplete="off">
-                        <h6 id="passwordvalidation"></h6>
+                      -->
+                      <br>
+                    <div>
+                      <input type="submit" value="Ingreso cliente" class="btn btn-success">
+                      
+                      <a href="{% url 'registro' %}">
+                        <button type="button" class="btn btn-md btn-outline-info">Registrarse</button> </a>
+                      
+                      <a href="{% url 'addmenu' %}">
+                        <button type="button" class="btn btn-md btn-outline-secondary">Ingreso trabajador</button> </a>
 
 
-                    <br> -->
-
-
-                    <div class="d-grid gap-2 d-md-block">
-
-                      {% url 'index' as index_url %}
-                      {% if index_url %}
-                      <input type="submit" value="Ingreso cliente">
-                      {% endif %}
-
-
-                        <!-- <button type="button" class="btn btn-lg btn-primary"></button> -->
-                        
-                      </div>
-                        
-                    <div class="d-grid gap-2 d-md-block">
-                      {% url 'registro' as registro_url %}
-                      {% if the_url %}
-                      <a href="{{ registro_url }}"> 
-                        <button type="button" class="btn btn-lg btn-secondary">Registrarse</button> </a>
-                        {% endif %}
                       </div>
 
-                    <div class="d-grid gap-2 d-md-block"></div>
-                        {% url 'addmenu' as addmenu_url %}
-                        {% if the_url %}
-                      <a href="{{ addmenu_url }}"> 
-                        <button type="button" class="btn btn-lg btn-secondary">Ingreso trabajador</button> </a>
-                        {% endif %}
-                    </div>
 
                 </form>
 <!-- Termino de formulario -->
@@ -107,15 +93,10 @@
 
             </div>
 
-
-
 </div>
 
 
 
-
-
-  
 
 
 <!-- Bootstrap JS -->

@@ -35,4 +35,8 @@ que utilice fetch y que funcione para la siguiente api rest: https://trefle.io/a
 
 
 
+class Meta:
+model = Vehiculo
+fields =['patente', 'marca', 'modelo', 'categoria']
+
 

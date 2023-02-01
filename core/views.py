@@ -9,43 +9,43 @@ from .forms import LoginForm
 # Create your views here.
 
 
-@csrf_protect
-def login_view(request):
- #crear objeto de formulario
-    context = {'form': LoginForm()}
-
-    if request.method== 'POST':
-        formulario = LoginForm(request.POST)
-
-        # comprobar si los datos del formulario son válidos
-        if formulario.is_valid():
-            # guardar los datos del formulario en el modelo
-            formulario.save()
-            context['mensaje'] = "Guardado correctamente"
-
-    # datos['form'] = form
-    return render(request, "core/login.html", context)
-
-
-
-
-
-
 # @csrf_protect
 # def login_view(request):
-#     template_name = 'core/login.html'
-#     modelClass = LoginForm()  # crear objeto de formulario
-#     context = {'form': modelClass}
+#  #crear objeto de formulario
+#     context = {'form': LoginForm()}
 
-#     if request.method == 'POST':
-#         modelClass = LoginForm(request.POST)
+#     if request.method== 'POST':
+#         formulario = LoginForm(request.POST)
+
 #         # comprobar si los datos del formulario son válidos
-#         if modelClass.is_valid():
+#         if formulario.is_valid():
 #             # guardar los datos del formulario en el modelo
-#             modelClass.save()
+#             formulario.save()
 #             context['mensaje'] = "Guardado correctamente"
 
-#     return render(request, template_name, context)
+#     # datos['form'] = form
+#     return render(request, "core/login.html", context)
+
+
+
+
+
+
+@csrf_protect
+def login_view(request):
+    template_name = 'core/login.html'
+    modelClass = LoginForm()  # crear objeto de formulario
+    context = {'form': modelClass}
+
+    if request.method == 'POST':
+        modelClass = LoginForm(request.POST)
+        # comprobar si los datos del formulario son válidos
+        if modelClass.is_valid():
+            # guardar los datos del formulario en el modelo
+            modelClass.save()
+            context['mensaje'] = "Guardado correctamente"
+
+    return render(request, template_name, context)
 
 
 

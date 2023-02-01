@@ -7,7 +7,22 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = Person  # se especifica el nombre del modelo
         fields = "__all__"  # valor especial del atributo de campos para indicar que se deben usar todos los campos del modelo
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'email', 
+                'style': 'width: 300px;', 
+                'class': 'form-control', 
+                }),
+            'password': forms.PasswordInput(attrs={
+                'placeholder': 'pass', 
+                'style': 'width: 300px;', 
+                'class': 'form-control', 
+                }),
+        }
 
+
+error_messages = {
+    "unique": "El correo ya se encuentra registrado"}
 
 
 # Creacion del formulario a partir de un modelo, usando ModelForm:
