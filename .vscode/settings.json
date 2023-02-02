@@ -1,6 +1,9 @@
 {
-    "workbench.preferredLightColorTheme": "Quiet Light",
+    "workbench.preferredLightColorTheme": "Slack Theme Hoth",
     "editor.minimap.autohide": true,
     "window.autoDetectColorScheme": true,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Slack Theme Hoth",
+    "workbench.iconTheme": "deepdark-material-icons",
+    "workbench.preferredDarkColorTheme": "Activate UMBRA protocol"
 }

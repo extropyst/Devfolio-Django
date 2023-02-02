@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 import requests
 import json
@@ -10,7 +13,7 @@ plants_endpoint = 'https://trefle.io/api/v1/plants?token=' + TREFLE_API_TOKEN
 
 # Create your models here.
 
-   
+
 class Plant(models.Model):
     common_name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255)
@@ -18,17 +21,20 @@ class Plant(models.Model):
     image_url = models.URLField()
 
 
-class Person(models.Model):
-    email = models.EmailField(
-        max_length=255, unique=True, verbose_name='Correo', help_text="Formato: username@nombredominio.extension", )
-    password = models.CharField(max_length=255, verbose_name='Contraseña')
+class user(AbstractUser):
+    pass
+    # username = models.CharField(
+    #     max_length=255, verbose_name='Nombre de usuario')
+    # email = models.EmailField(
+    #     max_length=255, unique=True, verbose_name='Correo', help_text="Formato: username@nombredominio.extension", )
+    # password = models.CharField(max_length=255, verbose_name='Contraseña')
 
 
-
-
-# class Person(models.Model):
-#     first_name = models.CharField(max_length=30)
-#     last_name = models.CharField(max_length=30)
+class Carro(models.Model):
+    common_name = models.CharField(max_length=255)
+    scientific_name = models.CharField(max_length=255)
+    bibliography = models.CharField(max_length=255)
+    image_url = models.URLField()
 
 
 

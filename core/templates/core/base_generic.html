@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- https://www.bootstrapcdn.com/ -->
+
+<!-- boostrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<!-- Fuentes de texto
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> -->
+    
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+<!-- jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+<!-- Datatable JS -->
+<!-- <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
+<!-- datatable css -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css"> -->
+
+
+<!-- My Style CSS in static file -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% block MyStatics %}
+{% endblock %}
+
+
+<title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+
+            {% block navbar %}
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <div class="container-fluid g-2">
+                <a class="navbar-brand" href="#"><h1>Garden Store</h1></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
+                        <ul class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}"> <h3>Home</h3></a>
+                        </ul>
+                        <li class="nav-item g-2">
+                            {% if user.is_authenticated %}
+                            <ul> <h5> Usuario: {{ user.get_username }} </h5></ul> 
+                            <ul><a class="nav-link btn m-auto justify-content-center btn-outline-danger text-dark" href="{% url 'logout'%}?next={{request.path}}">Cierre de sesión</a></ul>
+                            {% else %}
+                            <ul><a class="nav-link btn m-auto justify-content-center btn-outline-primary text-dark" href="{% url 'login'%}?next={{request.path}}">Inicio de sesión</a></ul>
+                            {% endif %}
+                        </li>
+
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <a href="{% url 'menu' %}"> <button class="btn btn-outline-success" type="button"
+                                id="navbar_boton1">Buscar</button> </a>
+                    </form>
+                    
+
+
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+            {% endblock %}
+
+
+
+
+
+
+
+    <div class="container">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
+

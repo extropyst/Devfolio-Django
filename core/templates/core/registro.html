@@ -1,102 +1,58 @@
+{% extends "core/base_generic.html" %}
+
+
+{% block MyStatics %}
+<!-- My Style -->
 {% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/registro.css' %}">
+<!-- My JavaScript -->
+{% load static %}
+<script src="{% static 'js/registro.js' %}"></script>
+{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- boostrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- jquery  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!-- my estilo -->
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-
-    <!-- Navbar -->
-
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/html/login.html">Home</a>
-                  </li>
-      
-                </ul>
-              </div>
-            </div>
-          </nav>
-      </div>
+{% block title %}Registro{% endblock %}
 
 
-      
- <div class="container">
+{% block content %}
 
+
+ <div class="container d-table container-sm p-5 gap-2 m-auto justify-content-center">
     <br>
-          <h1 class="text-center text-dark">
-              Fomulario de registro
-          </h1>
-          <p class="text-center">
-              Complete los campos para registrarse en nuestro sitio
-          </p>
+<!-- Encabezado -->
+          <h1 class="text-center text-dark">Fomulario de registro</h1>
+          <p class="text-center">Complete los campos para registrarse en nuestro sitio</p>
+            <div class="col-lg-auto m-auto justify-content-center d-grid gap-2 ">
+<!-- Inicio de formulario -->
+                <form method="post"  id="form_registro">
+                    {% csrf_token %}
 
+                    <label for="username">Nombre: <span class="asterik">*</span></label>
+                    <div class="form-group" id="username">{{ form.username }}</div>
+                    <!-- <h6 id="emailvalidation"></h6> -->
 
+                    <label for="email">Correo: <span class="asterik">*</span></label>
+                    <div class="form-group" id="email">{{ form.email }}</div>
+                    <!-- <h6 id="emailvalidation"></h6> -->
 
-          <div class="container">
-              <div class="col-lg-8 m-auto d-block">
-                  <form action="#">
-                      <div class="form-group">
-      
-                          <label for="username">Nombre de usuario: <span class="asterik">*</span></label>
-                          <input type="text" name="username" id="username" class="form-control" autocomplete="off">
-                          <h6 id="usernamevalidation"></h6>
-                      </div>
-                      <div class="form-group">
-      
-                          <label for="email">Correo: <span class="asterik">*</span></label>
-                          <input type="text" name="email" id="email" class="form-control" autocomplete="off">
-                          <h6 id="emailvalidation"></h6>
-                      </div>
-                      <div class="form-group">
-                          <label for="password">Contraseña: <span class="asterik">*</span></label>
-                          <input type="password" name="pass" id="password" class="form-control" autocomplete="off">
-                          <h6 id="passwordvalidation"></h6>
-                      </div>
-                      <div class="form-group">
-                          <span><i class="fa fa-check" aria-hidden="true" id="green-tick"></i></span>
-                          <label for="confirmpassword">Confirme la contraseña: <span class="asterik">*</span></label>
-                          <input type="password" name="pass" id="confirmpassword" class="form-control" autocomplete="off">
-                          <h6 id="confirmpasswordvalidation"></h6>
-                      </div>
-                      <br>
-                      <input type="submit" onclick="myFunction()" value="Enviar" id="submitvalidation" class="btn btn-primary">
-                  </form>
-              </div>
-          </div>
+                    <label for="password">Contraseña: <span class="asterik">*</span></label>
+                    <div class="form-group" id="password">{{ form.password }}</div>
+                    <!-- <h6 id="passwordvalidation"></h6> -->
 
-    
- 
+                    <br>
+                    <div>
+                        <input type="submit" value="Enviar" class="btn btn-success">
+
+                    </div>
+
+                </form>
+<!-- Termino de formulario -->
+
+                <div class="alert" role="alert">{{mensaje}}</div>
+
+                </div>
 
 
  </div>
-      
-
-      
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- My JavaScript -->
-<script src="{% static 'js/registro.js' %}"></script>
 
 
-</body>
-</html>
+{% endblock %}

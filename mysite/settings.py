@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django_bootstrap5",
-    'core'
+    'django_bootstrap5',  # new
+    'core',   # new
 ]
 
 MIDDLEWARE = [
@@ -67,7 +67,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,15 +89,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-# cs='''(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'''
 
+# ORACLE DATABASE:
+
+# cs='''(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-santiago-1.oraclecloud.com))(connect_data=(service_name=gaf071a03b20a62_oxtyb031bdn4vwo2_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'''
 
 # connection = oracledb.connect(
 #      user="appweb",
 #      password='v3dn7wWECsZT',
 #      dsn=cs)
-
-
 
 # DATABASES ={
 #     'default': {
@@ -110,6 +112,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #         }
 #     }
 
+# MYSQL DATABASE:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -162,9 +165,22 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # STATIC_URL = 'mysite/core/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'core/static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(str(BASE_DIR.joinpath('core/static')),)
+]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = 'index'
+
+
+AUTH_USER_MODEL = "core.user"

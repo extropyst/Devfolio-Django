@@ -1,0 +1,95 @@
+{% extends "core/base_generic.html" %}
+
+
+{% block MyStatics %}
+<!-- My Style -->
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/login.css' %}">
+<!-- My JavaScript -->
+{% load static %}
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+
+
+ <div class="container d-table container-sm p-5 gap-2">
+  <br>
+<!-- Encabezado -->
+        <h2 class="text-center text-dark">Autenticación de usuario</h2>
+        <p class="text-center">Complete los campos para ingresar en nuestro sitio</p>
+    <div class="col-lg-auto justify-content-center d-grid gap-2 ">
+<!-- Inicio de formulario -->
+      <form method="post" id="form_registro" >
+      {% csrf_token %}
+          <div>
+
+            <label for="email">Nombre de usuario: <span class="asterik">*</span></label>
+            <div class="form-group" id="email">{{ form.username }}</div>
+          </div>
+          <!-- <h6 id="emailvalidation"></h6> -->
+          <div>
+            <label for="password">Contraseña: <span class="asterik">*</span></label>
+            <div class="form-group" id="password">{{ form.password }}</div>
+          </div>
+          <!-- <h6 id="passwordvalidation"></h6> -->
+                      
+
+          <br>
+          <input type="submit" value="Ingreso cliente" class="btn btn-success">
+          <br>
+
+
+          <div class="col-lg-auto mt-2 d-inline-flex gap-2">
+            
+
+            <a href="% url 'registro' %">
+              <button type="button" class="btn btn-sm btn-outline-primary">Registrarse</button> </a>
+            
+            <a href="{% url 'addmenu' %}">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Ingreso trabajador</button> </a>
+
+            </div>
+            
+
+      </form>
+<!-- Termino de formulario -->
+
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <a href="{% url 'password_reset' %}">Olvido la contraseña?</a>
+        <div class="alert" role="alert">{{mensaje}}</div>
+
+      </div>
+
+    <div class="col-lg-auto m-auto mt-2 justify-content-center d-inline-flex gap-2">
+          {% if form.errors %}
+          <h6>Tu nombre de usuario y contraseña no coinciden. Por favor, inténtelo de nuevo.</h6>
+          {% endif %}
+          
+          {% if next %}
+          {% if user.is_authenticated %}
+          <h8>Su cuenta no tiene acceso a esta página. Para continuar, inicie sesión con una cuenta que tenga acceso.</h8>
+          {% else %}
+          <h8>Inicie sesión para ver esta página.</h8>
+          
+          {% endif %}
+          {% endif %}
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

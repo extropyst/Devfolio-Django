@@ -1,0 +1,18 @@
+{% extends "core/base_generic.html" %}
+
+
+{% block MyStatics %}
+<!-- My Style -->
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}">
+<!-- My JavaScript -->
+{% load static %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+<p>A cerrado su sesión</p>
+
+<a href="{% url 'login'%}">Haga clic aquí para iniciar de nuevo.</a>
+{% endblock %}
