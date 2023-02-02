@@ -27,26 +27,9 @@ class Plant(models.Model):
 #     pass
 
 
-# @receiver(post_save, sender=User)
-# def crear_usuario_perfil(sender, instance, created, **kwargs):
-#     if created:
-#         User.objects.create(usuario=instance)
-
-
-
-
-    # username = models.CharField(
-    #     max_length=255, verbose_name='Nombre de usuario')
-    # email = models.EmailField(
-    #     max_length=255, unique=True, verbose_name='Correo', help_text="Formato: username@nombredominio.extension", )
-    # password = models.CharField(max_length=255, verbose_name='Contraseña')
-
-
 class Carro(models.Model):
-    common_name = models.CharField(max_length=255)
-    scientific_name = models.CharField(max_length=255)
-    bibliography = models.CharField(max_length=255)
-    image_url = models.URLField()
+    item = models.CharField(max_length=250)
+    quantity = models.IntegerField()
 
 
 
