@@ -18,11 +18,11 @@ class registroForm(UserCreationForm):
             fields = ['username', 'first_name',
                     'last_name', 'email', 'password1', 'password2']
             widgets = {
-                'username': forms.TextInput(attrs={
-                    'placeholder': 'username',
-                    'style': 'width: 300px;',
-                    'class': 'form-control',
-                }),
+                # 'username': forms.TextInput(attrs={
+                #     'placeholder': 'username',
+                #     'style': 'width: 300px;',
+                #     'class': 'form-control',
+                # }),
                 'first_name': forms.TextInput(attrs={
                     'placeholder': 'Nombre',
                     'style': 'width: 300px;',

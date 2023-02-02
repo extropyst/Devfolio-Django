@@ -23,37 +23,42 @@
           <p class="text-center">Complete los campos para registrarse en nuestro sitio</p>
             <div class="col-lg-auto m-auto justify-content-center d-grid gap-2 ">
 <!-- Inicio de formulario -->
+{% csrf_token %}
                 <form method="post"  id="form_registro">
-                    {% csrf_token %}
+                    <!-- <div class="form-group g-2"> -->
+                    <div class="col">
 
                     <label for="username">Usuario: <span class="asterik">*</span></label>
-                    <div class="form-group" id="username">{{ form.username }}</div>
+                    <ul id="username">{{ form.username }}</ul>
                     <!-- <h6 id="emailvalidation"></h6> -->
-                    
+
                     <label for="first_name">Nombre: <span class="asterik">*</span></label>
-                    <div class="form-group" id="first_name">{{ form.first_name }}</div>
+                    <ul id="first_name">{{ form.first_name }}</ul>
                     <!-- <h6 id="emailvalidation"></h6> -->
 
                     <label for="last_name">Apellido: <span class="asterik">*</span></label>
-                    <div class="form-group" id="last_name">{{ form.last_name }}</div>
+                    <ul id="last_name">{{ form.last_name }}</ul>
                     <!-- <h6 id="emailvalidation"></h6> -->
 
                     <label for="email">Correo: <span class="asterik">*</span></label>
-                    <div class="form-group" id="email">{{ form.email }}</div>
+                    <ul id="email">{{ form.email }}</ul>
                     <!-- <h6 id="emailvalidation"></h6> -->
 
                     <label for="password1">Contraseña: <span class="asterik">*</span></label>
-                    <div class="form-group" id="password1">{{ form.password1 }}</div>
+                    <ul id="password1">{{ form.password1 }}</ul>
                     <!-- <h6 id="passwordvalidation"></h6> -->
 
                     <label for="password2">Reingrese Contraseña: <span class="asterik">*</span></label>
-                    <div class="form-group" id="password2">{{ form.password2 }}</div>
+                    <ul id="password2">{{ form.password2 }}</ul>
                     <!-- <h6 id="passwordvalidation"></h6> -->
+                    
+                    </div>
+                    <!-- </div> -->
 
                     <br>
+
                     <div>
                         <input type="submit" value="Enviar" class="btn btn-success">
-
                     </div>
 
                 </form>

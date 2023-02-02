@@ -64,7 +64,7 @@
                         <ul class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'index' %}"> <h3>Home</h3></a>
                         </ul>
-                        <li class="nav-item g-2">
+                        <li class="nav-item g-2 align-self-center ms-xxl-5 float-right ">
                             {% if user.is_authenticated %}
                             <ul> <h5> Usuario: {{ user.get_username }} </h5></ul> 
                             <ul><a class="nav-link btn m-auto justify-content-center btn-outline-danger text-dark" href="{% url 'logout'%}?next={{request.path}}">Cierre de sesión</a></ul>
@@ -74,14 +74,29 @@
                         </li>
 
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <a href="{% url 'menu' %}"> <button class="btn btn-outline-success" type="button"
-                                id="navbar_boton1">Buscar</button> </a>
-                    </form>
+
+                        <form class="d-flex">
+                            {% if user.is_authenticated %}
+                                        {% if user.is_staff %}
+                            <ul>
+
+                            </ul>
+                            <ul><a class="btn btn-success m-auto d-flex p-2 g-2"
+                                    href="{% url 'addmenu'%}?next={{request.path}}">Agregar Producto</a></ul>
+                            
+                            
+                                        {% else %}
+                                        <input class="form-control m-auto d-flex p-2 g-2" type="search" placeholder="Search" aria-label="Search">
+                                        <a href="{% url 'menu' %}?next={{request.path}}"> <button class="btn btn-primary m-auto d-flex p-2 g-2" type="button" id="navbar_boton1">Comprar</button>
+                                        </a>
+                                        {% endif %}
+                            {% else %}
+                            <ul></ul>
+                            {% endif %}
+                        </form>
                     
-
-
+                    
+                    
 
 
                 </div>
