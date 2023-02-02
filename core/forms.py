@@ -1,11 +1,12 @@
 from django import forms
-from .models import User, Plant
+from .models import user, Plant
+
 
 
 # Creacion del formulario a partir de un modelo, usando ModelForm:
 class registroForm(forms.ModelForm):
     class Meta:
-        model = User  # se especifica el nombre del modelo
+        model = user  # se especifica el nombre del modelo
         fields = ['username', 'email', 'password']
         widgets = {
             'username': forms.TextInput(attrs={

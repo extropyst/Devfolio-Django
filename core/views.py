@@ -1,4 +1,4 @@
-from .models import Plant
+from .models import Plant, user
 from .forms import addmenuForm, menuForm, registroForm
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
@@ -28,6 +28,9 @@ def registro_view(request):
             messages.success(
                 request, f'Tu cuenta ha sido creada. ¡Ya puedes iniciar sesión!')
             return HttpResponseRedirect(reverse('login'))
+        else:
+            return HttpResponse("Your username and password didn't match.")
+            
 
     return render(request, template_name, context)
 
