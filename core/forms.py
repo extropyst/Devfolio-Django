@@ -1,30 +1,54 @@
 from django import forms
-from .models import user, Plant
-
+from .models import Plant
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 
 
 # Creacion del formulario a partir de un modelo, usando ModelForm:
-class registroForm(forms.ModelForm):
-    class Meta:
-        model = user  # se especifica el nombre del modelo
-        fields = ['username', 'email', 'password']
-        widgets = {
-            'username': forms.TextInput(attrs={
-                'placeholder': 'username',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'email': forms.EmailInput(attrs={
-                'placeholder': 'email',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'password': forms.PasswordInput(attrs={
-                'placeholder': 'pass',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-        }
+class registroForm(UserCreationForm):
+
+        email = forms.EmailField()
+        first_name = forms.CharField(max_length=150)
+        last_name = forms.CharField(max_length=150)
+        # password1 = forms.CharField(max_length=128)
+        # password2 = forms.CharField(max_length=128)
+        class Meta:
+            model = User  # se especifica el nombre del modelo
+
+            fields = ['username', 'first_name',
+                    'last_name', 'email', 'password1', 'password2']
+            widgets = {
+                'username': forms.TextInput(attrs={
+                    'placeholder': 'username',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+                'first_name': forms.TextInput(attrs={
+                    'placeholder': 'Nombre',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+                'last_name': forms.TextInput(attrs={
+                    'placeholder': 'Apellido',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+                'email': forms.EmailInput(attrs={
+                    'placeholder': 'email',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+                'password1': forms.PasswordInput(attrs={
+                    'placeholder': 'Contraseña',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+                'password2': forms.PasswordInput(attrs={
+                    'placeholder': 'Repita Contraseña',
+                    'style': 'width: 300px;',
+                    'class': 'form-control',
+                }),
+            }
 
 
 

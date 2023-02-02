@@ -1,12 +1,16 @@
-from .models import Plant, user
+from .models import Plant
 from .forms import addmenuForm, menuForm, registroForm
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
+
 
 
 
@@ -19,21 +23,26 @@ def registro_view(request):
     modelClass = registroForm()
     context = {'form': modelClass}
 
-    if request.method == 'POST':
-        # comprobar si los datos del formulario son válidos
+    if request.method != 'POST':
+        modelClass = registroForm()
+    else:
+        modelClass = registroForm(request.POST)
         if modelClass.is_valid():
-            # guardar los datos del formulario en el modelo
             modelClass.save()
             context['mensaje'] = "Guardado correctamente"
             messages.success(
                 request, f'Tu cuenta ha sido creada. ¡Ya puedes iniciar sesión!')
             return HttpResponseRedirect(reverse('login'))
         else:
-            return HttpResponse("Your username and password didn't match.")
-            
-
+            return HttpResponse("Su nombre de usuario y contraseña no coinciden.")
     return render(request, template_name, context)
 
+
+
+
+
+
+    return render(request, template_name, context)
 
 
 # @csrf_protect

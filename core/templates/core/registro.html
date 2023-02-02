@@ -26,16 +26,28 @@
                 <form method="post"  id="form_registro">
                     {% csrf_token %}
 
-                    <label for="username">Nombre: <span class="asterik">*</span></label>
+                    <label for="username">Usuario: <span class="asterik">*</span></label>
                     <div class="form-group" id="username">{{ form.username }}</div>
+                    <!-- <h6 id="emailvalidation"></h6> -->
+                    
+                    <label for="first_name">Nombre: <span class="asterik">*</span></label>
+                    <div class="form-group" id="first_name">{{ form.first_name }}</div>
+                    <!-- <h6 id="emailvalidation"></h6> -->
+
+                    <label for="last_name">Apellido: <span class="asterik">*</span></label>
+                    <div class="form-group" id="last_name">{{ form.last_name }}</div>
                     <!-- <h6 id="emailvalidation"></h6> -->
 
                     <label for="email">Correo: <span class="asterik">*</span></label>
                     <div class="form-group" id="email">{{ form.email }}</div>
                     <!-- <h6 id="emailvalidation"></h6> -->
 
-                    <label for="password">Contraseña: <span class="asterik">*</span></label>
-                    <div class="form-group" id="password">{{ form.password }}</div>
+                    <label for="password1">Contraseña: <span class="asterik">*</span></label>
+                    <div class="form-group" id="password1">{{ form.password1 }}</div>
+                    <!-- <h6 id="passwordvalidation"></h6> -->
+
+                    <label for="password2">Reingrese Contraseña: <span class="asterik">*</span></label>
+                    <div class="form-group" id="password2">{{ form.password2 }}</div>
                     <!-- <h6 id="passwordvalidation"></h6> -->
 
                     <br>

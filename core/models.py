@@ -2,6 +2,8 @@ from django.db import models
 # from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 import requests
 import json
@@ -21,8 +23,18 @@ class Plant(models.Model):
     image_url = models.URLField()
 
 
-class user(AbstractUser):
-    pass
+# class User(AbstractUser):
+#     pass
+
+
+# @receiver(post_save, sender=User)
+# def crear_usuario_perfil(sender, instance, created, **kwargs):
+#     if created:
+#         User.objects.create(usuario=instance)
+
+
+
+
     # username = models.CharField(
     #     max_length=255, verbose_name='Nombre de usuario')
     # email = models.EmailField(
