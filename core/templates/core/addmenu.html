@@ -23,39 +23,77 @@
 
       <div class="col-lg-8 m-auto d-block">
 
-        <form action="#">
+<!-- Inicio de formulario -->
+{% csrf_token %}
+<form method="post" id="form_registro">
+  <!-- <div class="form-group g-2"> -->
+  <div class="col">
+
+    <label for="username">Nombre Común: <span class="asterik">*</span></label>
+    <ul id="username">{{ form.common_name }}</ul>
+    <!-- <h6 id="emailvalidation"></h6> -->
+
+    <label for="first_name">Nombre Científico: <span class="asterik">*</span></label>
+    <ul id="first_name">{{ form.scientific_name }}</ul>
+    <!-- <h6 id="emailvalidation"></h6> -->
+
+    <label for="last_name">Bibliografía: <span class="asterik">*</span></label>
+    <ul id="last_name">{{ form.bibliography }}</ul>
+    <!-- <h6 id="emailvalidation"></h6> -->
 
 
-          <div class="form-group">
-            <label for="name">Nombre Común: <span class="asterik">*</span></label>
-            <input type="text" name="name" id="name" class="form-control" autocomplete="off" />
-            <h6 id="nameValidation"></h6>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Sube una foto
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Adjuntar fotografía de tu planta</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="form-group">
-            <label for="sciname">Nombre Científico: <span class="asterik">*</span></label>
-            <input type="text" name="sciname" id="sciname" class="form-control" autocomplete="off" />
-            <h6 id="scinameValidation"></h6>
+          <div class="modal-body">
+    <div class="modal-body">
+      <h2 class="fs-5">Carga una imagen local</h2>
+      <p></p> <input type="file" name="filefoto" id="filefoto">
+          
+      <hr>
+      <h2 class="fs-5">Adjuntar URL</h2>
+      <label for="foto">Adjuntar url de fotografía: <span class="asterik">*</span></label>
+      <ul id="foto">{{ form.image_url }}</ul> <p class="nav-link"> Ej: <a href="https://identify.plantnet.org/es">identify.plantnet.org</a>  ; <a href="https://photos.google.com">photos.google</a>, etc</p>
+    </div>
           </div>
-          <div class="form-group">
-            <label for="bibl">Bibliografía: <span class="asterik">*</span></label>
-            <input type="text" name="bibl" id="bibl" class="form-control" autocomplete="off" />
-            <h6 id="biblValidation"></h6>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
-          <div class="form-group">
-            <label for="imagen">Adjuntar fotografía <span class="asterik">*</span></label>
-            <input type="file" name="imagen" id="imagen" accept=".png,.jpg,.jpeg" class="form-control" autocomplete="off" />
-            <h6 id="priceValidation"></h6>
-          </div>
-          <br />
-
-          <!-- <input
-            type="submit" -->
-
-            <a href="/html/agregarprod.html">
-              <button type="button" id="submitValidation" onclick="myFunction()" class="btn btn-lg btn-primary">Agregar</button> </a>
+        </div>
+      </div>
+    </div>
 
 
-        </form>
+    <!-- <h6 id="emailvalidation"></h6> -->
+
+
+  </div>
+  <!-- </div> -->
+
+  <br>
+
+  <div>
+    <input type="submit" value="Enviar" class="btn btn-success">
+  </div>
+
+</form>
+<!-- Termino de formulario -->
+
+<div class="alert" role="alert">{{mensaje}}</div>
+
+</div>
 
 
 </main>

@@ -3,16 +3,17 @@ from .models import Plant
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-
-# Creacion del formulario a partir de un modelo, usando ModelForm:
-
-
-class carroForm(forms.Form):
-    quantity = forms.IntegerField(min_value=1, max_value=9, widget=forms.NumberInput(attrs={'class': 'form-control',
-                                                                                            'placeholder': 'quantity'}))
+# CART_SESSION_ID = 'cart'
 
 
 
+
+# class Add2CartForm(forms.Form):
+#     quantity = forms.IntegerField(min_value=1, max_value=9,
+#                                   widget=forms.NumberInput(attrs={
+#          'class': 'form-control',
+#          'placeholder': 'quantity',
+#          }))
 
 
 
@@ -92,50 +93,15 @@ class registroForm(UserCreationForm):
 
 
 
-class addmenuForm(UserCreationForm):
-    email = forms.EmailField()
-    first_name = forms.CharField(max_length=150)
-    last_name = forms.CharField(max_length=150)
-    # password1 = forms.CharField(max_length=128)
-    # password2 = forms.CharField(max_length=128)
-
+class addmenuForm(forms.ModelForm):
     class Meta:
-        model = User  # se especifica el nombre del modelo
+        model = Plant
+        fields = "__all__"
 
-        fields = ['username', 'first_name',
-                  'last_name', 'email', 'password1', 'password2']
-        widgets = {
-            # 'username': forms.TextInput(attrs={
-            #     'placeholder': 'username',
-            #     'style': 'width: 300px;',
-            #     'class': 'form-control',
-            # }),
-            'first_name': forms.TextInput(attrs={
-                'placeholder': 'Nombre',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'last_name': forms.TextInput(attrs={
-                'placeholder': 'Apellido',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'email': forms.EmailInput(attrs={
-                'placeholder': 'email',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'password1': forms.PasswordInput(attrs={
-                'placeholder': 'Contraseña',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-            'password2': forms.PasswordInput(attrs={
-                'placeholder': 'Repita Contraseña',
-                'style': 'width: 300px;',
-                'class': 'form-control',
-            }),
-        }
+        def __str__(self):
+            return self.common_name
+
+
 
 class menuForm(forms.ModelForm):
     class Meta:
@@ -186,3 +152,51 @@ class menuForm(forms.ModelForm):
 #             'id': 'password'
 #         })
 #     )
+
+
+# class Cart:
+#     def __init__(self, request):
+#         self.session = request.session
+#         self.cart = self.add_cart_session()
+
+#     def __iter__(self):
+#         Plant_ids = self.cart.keys()
+#         Plants = Plant.objects.filter(id__in=Plant_ids)
+#         cart = self.cart.copy()
+#         for Plant in Plants:
+#             cart[str(Plant.id)]['Plant'] = Plant
+#         for item in cart.values():
+#             item['total_price'] = int(item['price']) * int(item['quantity'])
+#             yield item
+
+#     def add_cart_session(self):
+#         cart = self.session.get(CART_SESSION_ID)
+#         if not cart:
+#             cart = self.session[CART_SESSION_ID] = {}
+#         return cart
+
+#     def add(self, Plant, quantity):
+#         Plant_id = str(Plant.id)
+
+#         if Plant_id not in self.cart:
+#             self.cart[Plant_id] = {
+#                 'quantity': 0, 'price': str(Plant.price)}
+
+#         self.cart.get(Plant_id)['quantity'] += quantity
+#         self.save()
+
+#     def remove(self, Plant):
+#         Plant_id = str(Plant.id)
+#         if Plant_id in self.cart:
+#             del self.cart[Plant_id]
+#             self.save()
+
+#     def save(self):
+#         self.session.modified = True
+
+#     def get_total_price(self):
+#         return sum(int(item['price']) * item['quantity'] for item in self.cart.values())
+
+#     def clear(self):
+#         del self.session[CART_SESSION_ID]
+#         self.save()

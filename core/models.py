@@ -15,22 +15,24 @@ plants_endpoint = 'https://trefle.io/api/v1/plants?token=' + TREFLE_API_TOKEN
 
 # Create your models here.
 
+def user_directory_path(instance, filename):
+
+    # file will be uploaded to MEDIA_ROOT / user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+
 
 class Plant(models.Model):
     common_name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255)
     bibliography = models.CharField(max_length=255)
     image_url = models.URLField()
+    # imagen_file = models.FileField(
+    #     upload_to=user_directory_path+'% Y/% m/% d/', max_length=254)
 
 
 # class User(AbstractUser):
 #     pass
-
-
-class Carro(models.Model):
-    item = models.CharField(max_length=250)
-    quantity = models.IntegerField()
-
 
 
 
@@ -43,7 +45,8 @@ for plant in data['data']:
     'common_name': plant.get('common_name'),
     'scientific_name': plant.get('scientific_name'),
     'bibliography': plant.get('bibliography'),
-    'image_url': plant.get('image_url')
+    'image_url': plant.get('image_url'),
+    # 'year': plant.get('year')
     })
 
 for plant_dict in plant_list:
@@ -51,7 +54,8 @@ for plant_dict in plant_list:
     common_name=plant_dict['common_name'],
     scientific_name=plant_dict['scientific_name'],
     bibliography=plant_dict['bibliography'],
-    image_url=plant_dict['image_url']
+    image_url=plant_dict['image_url'],
+    # price=plant_dict['year'],
     )
 
 
